@@ -1,0 +1,471 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F44FD87419E0019100F2FCA7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F44FD87319E0019100F2FCA7 /* main.m */; };
+		F44FD87719E0019100F2FCA7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F44FD87619E0019100F2FCA7 /* AppDelegate.m */; };
+		F44FD87A19E0019100F2FCA7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F44FD87919E0019100F2FCA7 /* ViewController.m */; };
+		F44FD87D19E0019100F2FCA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44FD87B19E0019100F2FCA7 /* Main.storyboard */; };
+		F44FD87F19E0019100F2FCA7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F44FD87E19E0019100F2FCA7 /* Images.xcassets */; };
+		F44FD88219E0019100F2FCA7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F44FD88019E0019100F2FCA7 /* LaunchScreen.xib */; };
+		F44FD88E19E0019100F2FCA7 /* CalWalkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F44FD88D19E0019100F2FCA7 /* CalWalkTests.m */; };
+		F44FD89819E0047800F2FCA7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44FD89719E0047800F2FCA7 /* MapKit.framework */; };
+		F44FD89A19E0047F00F2FCA7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44FD89919E0047F00F2FCA7 /* CoreLocation.framework */; };
+		F44FD8A019E107DE00F2FCA7 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44FD89D19E107DE00F2FCA7 /* Bolts.framework */; };
+		F44FD8A119E107DE00F2FCA7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44FD89E19E107DE00F2FCA7 /* Parse.framework */; };
+		F44FD8A219E107DE00F2FCA7 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44FD89F19E107DE00F2FCA7 /* ParseFacebookUtils.framework */; };
+		F4575EC519E16350000AB6DA /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4575EC319E16350000AB6DA /* TableViewController.m */; };
+		F4575EC619E16350000AB6DA /* TableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4575EC419E16350000AB6DA /* TableViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F44FD88819E0019100F2FCA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F44FD86619E0019100F2FCA7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F44FD86D19E0019100F2FCA7;
+			remoteInfo = CalWalk;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F44FD86E19E0019100F2FCA7 /* CalWalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalWalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F44FD87219E0019100F2FCA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F44FD87319E0019100F2FCA7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F44FD87519E0019100F2FCA7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F44FD87619E0019100F2FCA7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F44FD87819E0019100F2FCA7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F44FD87919E0019100F2FCA7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F44FD87C19E0019100F2FCA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F44FD87E19E0019100F2FCA7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F44FD88119E0019100F2FCA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		F44FD88719E0019100F2FCA7 /* CalWalkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalWalkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F44FD88C19E0019100F2FCA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F44FD88D19E0019100F2FCA7 /* CalWalkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalWalkTests.m; sourceTree = "<group>"; };
+		F44FD89719E0047800F2FCA7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F44FD89919E0047F00F2FCA7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F44FD89D19E107DE00F2FCA7 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		F44FD89E19E107DE00F2FCA7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		F44FD89F19E107DE00F2FCA7 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		F4575EC219E16350000AB6DA /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		F4575EC319E16350000AB6DA /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		F4575EC419E16350000AB6DA /* TableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F44FD86B19E0019100F2FCA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F44FD8A019E107DE00F2FCA7 /* Bolts.framework in Frameworks */,
+				F44FD89A19E0047F00F2FCA7 /* CoreLocation.framework in Frameworks */,
+				F44FD8A119E107DE00F2FCA7 /* Parse.framework in Frameworks */,
+				F44FD8A219E107DE00F2FCA7 /* ParseFacebookUtils.framework in Frameworks */,
+				F44FD89819E0047800F2FCA7 /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F44FD88419E0019100F2FCA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F44FD86519E0019100F2FCA7 = {
+			isa = PBXGroup;
+			children = (
+				F44FD89D19E107DE00F2FCA7 /* Bolts.framework */,
+				F44FD89E19E107DE00F2FCA7 /* Parse.framework */,
+				F44FD89F19E107DE00F2FCA7 /* ParseFacebookUtils.framework */,
+				F44FD89919E0047F00F2FCA7 /* CoreLocation.framework */,
+				F44FD89719E0047800F2FCA7 /* MapKit.framework */,
+				F44FD87019E0019100F2FCA7 /* CalWalk */,
+				F44FD88A19E0019100F2FCA7 /* CalWalkTests */,
+				F44FD86F19E0019100F2FCA7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F44FD86F19E0019100F2FCA7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F44FD86E19E0019100F2FCA7 /* CalWalk.app */,
+				F44FD88719E0019100F2FCA7 /* CalWalkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F44FD87019E0019100F2FCA7 /* CalWalk */ = {
+			isa = PBXGroup;
+			children = (
+				F44FD87519E0019100F2FCA7 /* AppDelegate.h */,
+				F44FD87619E0019100F2FCA7 /* AppDelegate.m */,
+				F44FD87819E0019100F2FCA7 /* ViewController.h */,
+				F44FD87919E0019100F2FCA7 /* ViewController.m */,
+				F44FD87B19E0019100F2FCA7 /* Main.storyboard */,
+				F4575EC219E16350000AB6DA /* TableViewController.h */,
+				F4575EC319E16350000AB6DA /* TableViewController.m */,
+				F4575EC419E16350000AB6DA /* TableViewController.xib */,
+				F44FD87E19E0019100F2FCA7 /* Images.xcassets */,
+				F44FD88019E0019100F2FCA7 /* LaunchScreen.xib */,
+				F44FD87119E0019100F2FCA7 /* Supporting Files */,
+			);
+			path = CalWalk;
+			sourceTree = "<group>";
+		};
+		F44FD87119E0019100F2FCA7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F44FD87219E0019100F2FCA7 /* Info.plist */,
+				F44FD87319E0019100F2FCA7 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F44FD88A19E0019100F2FCA7 /* CalWalkTests */ = {
+			isa = PBXGroup;
+			children = (
+				F44FD88D19E0019100F2FCA7 /* CalWalkTests.m */,
+				F44FD88B19E0019100F2FCA7 /* Supporting Files */,
+			);
+			path = CalWalkTests;
+			sourceTree = "<group>";
+		};
+		F44FD88B19E0019100F2FCA7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F44FD88C19E0019100F2FCA7 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F44FD86D19E0019100F2FCA7 /* CalWalk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F44FD89119E0019100F2FCA7 /* Build configuration list for PBXNativeTarget "CalWalk" */;
+			buildPhases = (
+				F44FD86A19E0019100F2FCA7 /* Sources */,
+				F44FD86B19E0019100F2FCA7 /* Frameworks */,
+				F44FD86C19E0019100F2FCA7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CalWalk;
+			productName = CalWalk;
+			productReference = F44FD86E19E0019100F2FCA7 /* CalWalk.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F44FD88619E0019100F2FCA7 /* CalWalkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F44FD89419E0019100F2FCA7 /* Build configuration list for PBXNativeTarget "CalWalkTests" */;
+			buildPhases = (
+				F44FD88319E0019100F2FCA7 /* Sources */,
+				F44FD88419E0019100F2FCA7 /* Frameworks */,
+				F44FD88519E0019100F2FCA7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F44FD88919E0019100F2FCA7 /* PBXTargetDependency */,
+			);
+			name = CalWalkTests;
+			productName = CalWalkTests;
+			productReference = F44FD88719E0019100F2FCA7 /* CalWalkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F44FD86619E0019100F2FCA7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = CalHacks;
+				TargetAttributes = {
+					F44FD86D19E0019100F2FCA7 = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
+					F44FD88619E0019100F2FCA7 = {
+						CreatedOnToolsVersion = 6.0.1;
+						TestTargetID = F44FD86D19E0019100F2FCA7;
+					};
+				};
+			};
+			buildConfigurationList = F44FD86919E0019100F2FCA7 /* Build configuration list for PBXProject "CalWalk" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F44FD86519E0019100F2FCA7;
+			productRefGroup = F44FD86F19E0019100F2FCA7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F44FD86D19E0019100F2FCA7 /* CalWalk */,
+				F44FD88619E0019100F2FCA7 /* CalWalkTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F44FD86C19E0019100F2FCA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F44FD87D19E0019100F2FCA7 /* Main.storyboard in Resources */,
+				F44FD88219E0019100F2FCA7 /* LaunchScreen.xib in Resources */,
+				F44FD87F19E0019100F2FCA7 /* Images.xcassets in Resources */,
+				F4575EC619E16350000AB6DA /* TableViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F44FD88519E0019100F2FCA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F44FD86A19E0019100F2FCA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F44FD87A19E0019100F2FCA7 /* ViewController.m in Sources */,
+				F44FD87719E0019100F2FCA7 /* AppDelegate.m in Sources */,
+				F44FD87419E0019100F2FCA7 /* main.m in Sources */,
+				F4575EC519E16350000AB6DA /* TableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F44FD88319E0019100F2FCA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F44FD88E19E0019100F2FCA7 /* CalWalkTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F44FD88919E0019100F2FCA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F44FD86D19E0019100F2FCA7 /* CalWalk */;
+			targetProxy = F44FD88819E0019100F2FCA7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F44FD87B19E0019100F2FCA7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F44FD87C19E0019100F2FCA7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F44FD88019E0019100F2FCA7 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F44FD88119E0019100F2FCA7 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F44FD88F19E0019100F2FCA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F44FD89019E0019100F2FCA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F44FD89219E0019100F2FCA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Simon/Downloads/GoogleMaps-iOS-1.8.1",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = CalWalk/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F44FD89319E0019100F2FCA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Simon/Downloads/GoogleMaps-iOS-1.8.1",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = CalWalk/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F44FD89519E0019100F2FCA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CalWalkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalWalk.app/CalWalk";
+			};
+			name = Debug;
+		};
+		F44FD89619E0019100F2FCA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CalWalkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalWalk.app/CalWalk";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F44FD86919E0019100F2FCA7 /* Build configuration list for PBXProject "CalWalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F44FD88F19E0019100F2FCA7 /* Debug */,
+				F44FD89019E0019100F2FCA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F44FD89119E0019100F2FCA7 /* Build configuration list for PBXNativeTarget "CalWalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F44FD89219E0019100F2FCA7 /* Debug */,
+				F44FD89319E0019100F2FCA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F44FD89419E0019100F2FCA7 /* Build configuration list for PBXNativeTarget "CalWalkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F44FD89519E0019100F2FCA7 /* Debug */,
+				F44FD89619E0019100F2FCA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F44FD86619E0019100F2FCA7 /* Project object */;
+}
