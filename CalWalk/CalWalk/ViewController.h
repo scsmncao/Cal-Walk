@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 #import <MessageUI/MessageUI.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface ViewController : UIViewController <MKMapViewDelegate, UITextFieldDelegate, MFMessageComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -23,10 +24,11 @@
 @property (strong, nonatomic) MKPlacemark *placemark;
 
 @property (strong, nonatomic) NSString *allSteps;
+@property (weak, nonatomic) IBOutlet UIButton *reset;
 
 - (IBAction)addressField:(UITextField *)sender;
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id)overlay;
-
+- (IBAction)reset:(id)sender;
 
 
 @end

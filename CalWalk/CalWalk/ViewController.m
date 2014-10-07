@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 #import <MessageUI/MessageUI.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface ViewController () <CLLocationManagerDelegate>
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -24,6 +25,8 @@ int timeTick;
 int timer_value;
 bool hasprompt;
 NSTimer *timer;
+int totaltime;
+bool hasspaned;
 
 @synthesize mapView=_mapView;
 
@@ -41,6 +44,7 @@ NSTimer *timer;
     _mapView.showsUserLocation = YES;
     _mapView.delegate = self;
     [_timer setDelegate:self];
+    [_timer setEnabled: NO];
 }
 
 - (BOOL)shouldAutorotate
@@ -60,8 +64,10 @@ NSTimer *timer;
     mapRegion.center = mapView.userLocation.coordinate;
     mapRegion.span.latitudeDelta = 0.04;
     mapRegion.span.longitudeDelta = 0.04;
-    
-    [mapView setRegion:mapRegion animated: NO];
+    if (!hasspaned) {
+        [mapView setRegion:mapRegion animated: YES];
+        hasspaned = true;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,8 +91,8 @@ NSTimer *timer;
             NSLog(@"%@", error);
         } else {
             thePlacemark = [placemarks lastObject];
-            float spanX = .5;
-            float spanY = .5;
+            float spanX = .04;
+            float spanY = .04;
             MKCoordinateRegion region;
             region.center.latitude = thePlacemark.location.coordinate.latitude;
             region.center.longitude = thePlacemark.location.coordinate.longitude;
@@ -105,8 +111,14 @@ NSTimer *timer;
             [finaldirections calculateETAWithCompletionHandler:^(MKETAResponse *response, NSError *error)
              {
                  NSTimeInterval estimatedTravelTimeInSeconds = response.expectedTravelTime;
-                 NSInteger time = estimatedTravelTimeInSeconds;
-                 NSString *strFromInt = [NSString stringWithFormat:@"%d",time];
+                 totaltime = estimatedTravelTimeInSeconds;
+                 NSString *strFromInt;
+                 if (totaltime > 60) {
+                     strFromInt = [NSString stringWithFormat:@"%d min",(int)floor(totaltime/60)];
+                 }
+                 else {
+                     strFromInt = [NSString stringWithFormat:@"%d sec",totaltime];
+                 }
                  _timer.text = strFromInt;
              }];
             [finaldirections2 calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
@@ -155,8 +167,7 @@ NSTimer *timer;
     hasprompt = false;
     timeTick = 0;
     [_timer setEnabled: NO];
-    NSString *time = _timer.text;
-    timer_value = [time intValue];
+    timer_value = totaltime;
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tick) userInfo:nil repeats:YES];
 }
 
@@ -179,16 +190,16 @@ NSTimer *timer;
     CLLocation *location = tempplacemark.location;
     CLLocation *currentlocation = [[CLLocation alloc]initWithLatitude:_mapView.userLocation.location.coordinate.latitude longitude:_mapView.userLocation.location.coordinate.longitude];
     double distance = [currentlocation distanceFromLocation: location];
-    printf("%f\n", distance);
     if (distance < 30) {
         timeTick = timer_value + 10;
         hasprompt = true;
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You have reached your destination."
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You have safely reached your destination."
                                                         message:@"Congrats!"
                                                        delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     }
     if (timeTick > timer_value) {
         [timer invalidate];
@@ -202,15 +213,21 @@ NSTimer *timer;
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
     }
     
-    else if (timer_value - timeTick < 30 && hasprompt == false && timeTick < timer_value) {
+    else if (timer_value - timeTick < 60 && hasprompt == false && timeTick < timer_value) {
         hasprompt = true;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Almost out of Time!"
-                                                        message:@"You have 30 seconds left to get home, would you like to add 5 more minutes?"
+                                                        message:@"You have 60 seconds left to get home, would you like to add 5 more minutes?"
                                                        delegate:self
                                               cancelButtonTitle:@"No"
                                               otherButtonTitles:nil];
         [alert addButtonWithTitle:@"Yes"];
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         [alert show];
     }
+}
+- (IBAction)reset:(id)sender {
+    [timer invalidate];
+    [_timer setEnabled: YES];
+    _timer.text = @"";
 }
 @end
