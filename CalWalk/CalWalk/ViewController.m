@@ -96,8 +96,8 @@ NSTimer *timer;
             MKDirectionsRequest *directions = [[MKDirectionsRequest alloc]init];
             _source = [MKMapItem mapItemForCurrentLocation];
             [directions setSource:_source];
-            MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:thePlacemark];
-            _destination = [[MKMapItem alloc]initWithPlacemark:placemark];
+            _placemark = [[MKPlacemark alloc] initWithPlacemark:thePlacemark];
+            _destination = [[MKMapItem alloc]initWithPlacemark:_placemark];
             [directions setDestination:_destination];
             directions.transportType = MKDirectionsTransportTypeWalking;
             MKDirections *finaldirections = [[MKDirections alloc] initWithRequest:directions];
@@ -174,23 +174,15 @@ NSTimer *timer;
 
 -(void)tick {
     timeTick++;
-    NSString *number = @"5863601035";
-    /*MKDirectionsRequest *directions = [[MKDirectionsRequest alloc]init];
-    _updatedsource =[MKMapItem mapItemForCurrentLocation];
-    [directions setSource:_updatedsource];
-    [directions setDestination:_destination];
-    directions.transportType = MKDirectionsTransportTypeWalking;
-    MKDirections *updateddirections = [[MKDirections alloc] initWithRequest:directions];
-    __block NSInteger time;
-    [updateddirections calculateETAWithCompletionHandler:^(MKETAResponse *response, NSError *error)
-     {
-         NSTimeInterval estimatedTravelTimeInSeconds = response.expectedTravelTime;
-         time = estimatedTravelTimeInSeconds;
-     }];
-    int myTime = time;
-    printf("%i", myTime);
-    if (myTime < 20) {
-        timeTick = timer_value + 1;
+    NSString *number = @"7144171047";
+    CLPlacemark *tempplacemark = _placemark;
+    CLLocation *location = tempplacemark.location;
+    CLLocation *currentlocation = [[CLLocation alloc]initWithLatitude:_mapView.userLocation.location.coordinate.latitude longitude:_mapView.userLocation.location.coordinate.longitude];
+    double distance = [currentlocation distanceFromLocation: location];
+    printf("%f\n", distance);
+    if (distance < 30) {
+        timeTick = timer_value + 10;
+        hasprompt = true;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You have reached your destination."
                                                         message:@"Congrats!"
                                                        delegate:self
@@ -201,9 +193,9 @@ NSTimer *timer;
     if (timeTick > timer_value) {
         [timer invalidate];
         [_timer setEnabled: YES];
-    }*/
+    }
     
-    if (timeTick == timer_value) {
+    else if (timeTick == timer_value) {
         [_timer setEnabled: YES];
         NSString *phoneNumber = [@"tel://" stringByAppendingString:number];
         NSArray *numbers = @[number];
@@ -212,7 +204,7 @@ NSTimer *timer;
     
     else if (timer_value - timeTick < 30 && hasprompt == false && timeTick < timer_value) {
         hasprompt = true;
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Close to Destination"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Almost out of Time!"
                                                         message:@"You have 30 seconds left to get home, would you like to add 5 more minutes?"
                                                        delegate:self
                                               cancelButtonTitle:@"No"

@@ -20,6 +20,7 @@
 @property (strong, nonatomic) MKMapItem *destination;
 @property (strong, nonatomic) MKMapItem *updatedsource;
 @property (weak, nonatomic) IBOutlet UITextField *destinationField;
+@property (strong, nonatomic) MKPlacemark *placemark;
 
 @property (strong, nonatomic) NSString *allSteps;
 
