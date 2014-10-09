@@ -21,15 +21,16 @@
 
 CLPlacemark *thePlacemark;
 MKRoute *routeDetails;
+NSTimer *timer;
 int timeTick;
 int timer_value;
-bool hasprompt;
-NSTimer *timer;
 int totaltime;
+bool hasprompt;
 bool hasspaned;
 
 @synthesize mapView=_mapView;
 
+//load everything when the view loads
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -43,13 +44,10 @@ bool hasspaned;
     [self.locationManager startUpdatingLocation];
     _mapView.showsUserLocation = YES;
     _mapView.delegate = self;
+    MKUserTrackingBarButtonItem *buttonItem = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
+    self.navigationItem.rightBarButtonItem = buttonItem;
     [_timer setDelegate:self];
     [_timer setEnabled: NO];
-}
-
-- (BOOL)shouldAutorotate
-{
-    return NO;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -58,6 +56,8 @@ bool hasspaned;
     return YES;
 }
 
+
+//when the map updates location, use this function
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     MKCoordinateRegion mapRegion;
@@ -70,11 +70,8 @@ bool hasspaned;
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
+//create a placemark for the annotation
 - (void)addAnnotation:(CLPlacemark *)placemark {
     MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
     point.coordinate = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude, placemark.location.coordinate.longitude);
@@ -83,7 +80,7 @@ bool hasspaned;
     [self.mapView addAnnotation:point];
 }
 
-
+//when the user types an address in the field and presses return
 - (IBAction)addressField:(UITextField *)sender {
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     [geocoder geocodeAddressString:sender.text completionHandler:^(NSArray *placemarks, NSError *error) {
@@ -93,6 +90,8 @@ bool hasspaned;
             thePlacemark = [placemarks lastObject];
             float spanX = .04;
             float spanY = .04;
+            
+            //find the coordinates and calculate the route and ETA
             MKCoordinateRegion region;
             region.center.latitude = thePlacemark.location.coordinate.latitude;
             region.center.longitude = thePlacemark.location.coordinate.longitude;
@@ -100,14 +99,22 @@ bool hasspaned;
             [self.mapView setRegion:region animated:YES];
             [self addAnnotation:thePlacemark];
             MKDirectionsRequest *directions = [[MKDirectionsRequest alloc]init];
+            
+            //set the source of the directions
             _source = [MKMapItem mapItemForCurrentLocation];
             [directions setSource:_source];
+            
+            //placemark and destination
             _placemark = [[MKPlacemark alloc] initWithPlacemark:thePlacemark];
             _destination = [[MKMapItem alloc]initWithPlacemark:_placemark];
+            
+            //set the destination
             [directions setDestination:_destination];
             directions.transportType = MKDirectionsTransportTypeWalking;
             MKDirections *finaldirections = [[MKDirections alloc] initWithRequest:directions];
             MKDirections *finaldirections2 = [[MKDirections alloc] initWithRequest:directions];
+            
+            //calculate ETA
             [finaldirections calculateETAWithCompletionHandler:^(MKETAResponse *response, NSError *error)
              {
                  NSTimeInterval estimatedTravelTimeInSeconds = response.expectedTravelTime;
@@ -121,9 +128,11 @@ bool hasspaned;
                  }
                  _timer.text = strFromInt;
              }];
+            
+            //calculate the route
             [finaldirections2 calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
                 if (error) {
-                    // Handle Error
+                    NSLog(@"%@", error);
                 } else {
                     [_mapView removeOverlays:_mapView.overlays];
                     routeDetails = response.routes.lastObject;
@@ -135,7 +144,7 @@ bool hasspaned;
 }
 
 
-
+//creating a pin for the map
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     // If it's the user location, just return nil.
     if ([annotation isKindOfClass:[MKUserLocation class]])
@@ -157,12 +166,15 @@ bool hasspaned;
     return nil;
 }
 
+//render the directions line (route line)
 -(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
     MKPolylineRenderer  * routeLineRenderer = [[MKPolylineRenderer alloc] initWithPolyline:routeDetails.polyline];
     routeLineRenderer.strokeColor = [UIColor blueColor];
     routeLineRenderer.lineWidth = 5;
     return routeLineRenderer;
 }
+
+//the "Walk Me" button
 - (IBAction)startWalk:(id)sender {
     hasprompt = false;
     timeTick = 0;
@@ -171,18 +183,7 @@ bool hasspaned;
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tick) userInfo:nil repeats:YES];
 }
 
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
-        hasprompt = true;
-        return;
-    }
-    if (buttonIndex == 1) {
-        timer_value += 300;
-        return;
-    }
-}
-
-
+//every time the timer ticks (every second), run this method
 -(void)tick {
     timeTick++;
     NSString *number = @"7144171047";
@@ -191,21 +192,18 @@ bool hasspaned;
     CLLocation *currentlocation = [[CLLocation alloc]initWithLatitude:_mapView.userLocation.location.coordinate.latitude longitude:_mapView.userLocation.location.coordinate.longitude];
     double distance = [currentlocation distanceFromLocation: location];
     if (distance < 30) {
-        timeTick = timer_value + 10;
         hasprompt = true;
+        [timer invalidate];
+        [_timer setEnabled: YES];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You have safely reached your destination."
                                                         message:@"Congrats!"
                                                        delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
+        
         [alert show];
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     }
-    if (timeTick > timer_value) {
-        [timer invalidate];
-        [_timer setEnabled: YES];
-    }
-    
     else if (timeTick == timer_value) {
         [_timer setEnabled: YES];
         NSString *phoneNumber = [@"tel://" stringByAppendingString:number];
@@ -225,6 +223,20 @@ bool hasspaned;
         [alert show];
     }
 }
+
+//The add time alert
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        hasprompt = true;
+        return;
+    }
+    if (buttonIndex == 1) {
+        timer_value += 300;
+        return;
+    }
+}
+
+//"Stop" button
 - (IBAction)reset:(id)sender {
     [timer invalidate];
     [_timer setEnabled: YES];

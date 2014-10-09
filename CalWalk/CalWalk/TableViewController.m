@@ -91,12 +91,7 @@
     [_picker dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-
-#pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 3;
 }

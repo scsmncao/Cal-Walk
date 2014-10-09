@@ -28,6 +28,11 @@
 	<string>My App would pretty please like to use your GPS.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>My App would pretty please like to use your GPS.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
