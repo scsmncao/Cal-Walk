@@ -11,6 +11,8 @@
 #import <MapKit/MapKit.h>
 #import <MessageUI/MessageUI.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import <AddressBookUI/AddressBookUI.h>
+#import <AddressBook/AddressBook.h>
 
 @interface ViewController () <CLLocationManagerDelegate>
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -207,7 +209,7 @@ bool hasspaned;
     else if (timeTick == timer_value) {
         [_timer setEnabled: YES];
         NSString *phoneNumber = [@"tel://" stringByAppendingString:number];
-        NSArray *numbers = @[number];
+//        NSArray *numbers = @[number];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
     }
     

@@ -20,17 +20,18 @@
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    //self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showAddressBook)];
     
     self.navigationItem.rightBarButtonItem = addButton;
-    [_tblContactDetails setDelegate:self];
-    [_tblContactDetails setDataSource:self];
+    [self.tableView setDelegate:self];
+    [self.tableView setDataSource:self];
     
     [self populateContactData];
+
 
 }
 
@@ -40,7 +41,7 @@
     
     [_lblContactName setText:contactFullName];
     
-    [_tblContactDetails reloadData];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -115,7 +116,8 @@
     
     NSString *cellText = @"";
     NSString *detailText = @"";
-    cell.textLabel.text = cellText;
+    NSDictionary *contact = _tableData[indexPath.row];
+    cell.textLabel.text = contact[@"firstName"];
     cell.detailTextLabel.text = detailText;
     
     return cell;
