@@ -109,10 +109,10 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
     }
     
-    NSString *cellText = @"";
-    NSString *detailText = @"";
+    //NSString *cellText = @"";
+    NSString *detailText = @"HHEHHEHE";
     NSDictionary *contact = _tableData[indexPath.row];
-    cell.textLabel.text = contact[@"firstName"];
+    cell.textLabel.text = [contact[@"firstName"] stringByAppendingFormat:@" %@",contact[@"lastName"]];
     cell.detailTextLabel.text = detailText;
     
     return cell;
