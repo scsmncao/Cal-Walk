@@ -94,17 +94,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 3;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0 || section == 1) {
-        return 2;
-    }
-    else{
-        return 3;
-    }
+    return _tableData.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
