@@ -76,11 +76,21 @@
         [contactInfoDict setObject:(__bridge NSString *)generalCFObject forKey:@"lastName"];
         CFRelease(generalCFObject);
     }
-    generalCFObject = ABRecordCopyValue(person, kABPersonPhoneProperty);
-    if (generalCFObject) {
-        [contactInfoDict setObject:(__bridge NSString *)generalCFObject forKey:@"mobileNumber"];
-        CFRelease(generalCFObject);
+    ABMultiValueRef phonesRef = ABRecordCopyValue(person, kABPersonPhoneProperty);
+
+    for (int i=0; i < ABMultiValueGetCount(phonesRef); i++) {
+        CFStringRef currentPhoneLabel = ABMultiValueCopyLabelAtIndex(phonesRef, i);
+        CFStringRef currentPhoneValue = ABMultiValueCopyValueAtIndex(phonesRef, i);
+        
+        if (CFStringCompare(currentPhoneLabel, kABPersonPhoneMobileLabel, 0) == kCFCompareEqualTo) {
+            [contactInfoDict setObject:(__bridge NSString *)currentPhoneValue forKey:@"mobileNumber"];
+        }
+        
+        CFRelease(currentPhoneLabel);
+        CFRelease(currentPhoneValue);
     }
+    CFRelease(phonesRef);
+
 
     if (_tableData == nil) {
         _tableData = [[NSMutableArray alloc] init];
@@ -113,7 +123,9 @@
     NSString *detailText = @"";
     NSDictionary *contact = _tableData[indexPath.row];
     cell.textLabel.text = contact[@"firstName"];
-    cell.detailTextLabel.text = detailText;
+    cell.detailTextLabel.text = contact[@"mobileNumber"];
+    NSLog(cell.detailTextLabel.text);
+    NSLog(cell.textLabel.text);
     
     return cell;
 }

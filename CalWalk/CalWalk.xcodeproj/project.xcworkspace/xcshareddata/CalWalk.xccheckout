@@ -12,8 +12,6 @@
 	<dict>
 		<key>852A566782D405174C50E4F3C7DEAB125BCF05B3</key>
 		<string>https://github.com/andrewhlin/calhacks</string>
-		<key>F7B06E5064CAE521ED1BA33070CD47761192FDBE</key>
-		<string>github.com:scsmncao/DivideBy.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>CalWalk/CalWalk.xcodeproj</string>
@@ -21,8 +19,6 @@
 	<dict>
 		<key>852A566782D405174C50E4F3C7DEAB125BCF05B3</key>
 		<string>../../..</string>
-		<key>F7B06E5064CAE521ED1BA33070CD47761192FDBE</key>
-		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/andrewhlin/calhacks</string>
@@ -32,14 +28,6 @@
 	<string>852A566782D405174C50E4F3C7DEAB125BCF05B3</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>F7B06E5064CAE521ED1BA33070CD47761192FDBE</string>
-			<key>IDESourceControlWCCName</key>
-			<string></string>
-		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
