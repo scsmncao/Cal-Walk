@@ -120,14 +120,12 @@
     }
     
     //NSString *cellText = @"";
-    NSString *detailText = @"HHEHHEHE";
+    //NSString *detailText = @"HHEHHEHE";
     NSDictionary *contact = _tableData[indexPath.row];
-    cell.textLabel.text = contact[@"firstName"];
+    cell.textLabel.text = [contact[@"firstName"] stringByAppendingFormat:@" %@",contact[@"lastName"]];
     cell.detailTextLabel.text = contact[@"mobileNumber"];
     NSLog(cell.detailTextLabel.text);
     NSLog(cell.textLabel.text);
-    cell.textLabel.text = [contact[@"firstName"] stringByAppendingFormat:@" %@",contact[@"lastName"]];
-    cell.detailTextLabel.text = detailText;
     
     return cell;
 }
