@@ -9,7 +9,7 @@
 #import "TableViewController.h"
 
 @interface TableViewController ()
--(void)populateContactData;
+- (void)populateContactData;
 - (void)showAddressBook;
 
 @end
@@ -96,10 +96,17 @@
         _tableData = [[NSMutableArray alloc] init];
         printf("there");
     }
-    [_tableData addObject:contactInfoDict];
-    [self.tableView reloadData];
-    NSLog(@"value of number is%@",[contactInfoDict objectForKey:@"mobileNumber"]);
-    [_picker dismissViewControllerAnimated:YES completion:nil];
+    
+    //table data is a nsmuatble arry
+    if ([_tableData containsObject: contactInfoDict]) {
+        NSLog(@"HEY");
+    }
+    else {
+        [_tableData addObject:contactInfoDict];
+        [self.tableView reloadData];
+        NSLog(@"value of number is%@",[contactInfoDict objectForKey:@"mobileNumber"]);
+        [_picker dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -120,12 +127,12 @@
     }
     
     //NSString *cellText = @"";
-    //NSString *detailText = @"HHEHHEHE";
     NSDictionary *contact = _tableData[indexPath.row];
+    //check if contact in set?
     cell.textLabel.text = [contact[@"firstName"] stringByAppendingFormat:@" %@",contact[@"lastName"]];
     cell.detailTextLabel.text = contact[@"mobileNumber"];
-    NSLog(cell.detailTextLabel.text);
-    NSLog(cell.textLabel.text);
+//    NSLog(cell.detailTextLabel.text);
+//    NSLog(cell.textLabel.text);
     
     return cell;
 }
