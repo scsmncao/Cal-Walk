@@ -128,12 +128,8 @@
     
     //NSString *cellText = @"";
     NSDictionary *contact = _tableData[indexPath.row];
-    //check if contact in set?
     cell.textLabel.text = [contact[@"firstName"] stringByAppendingFormat:@" %@",contact[@"lastName"]];
     cell.detailTextLabel.text = contact[@"mobileNumber"];
-//    NSLog(cell.detailTextLabel.text);
-//    NSLog(cell.textLabel.text);
-    
     return cell;
 }
 
@@ -150,6 +146,11 @@
     
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+//user should be able to edit the rows of their emergency contacts
+    return YES;
+}
+
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
@@ -161,7 +162,6 @@
 */
 
 /*
-// Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
